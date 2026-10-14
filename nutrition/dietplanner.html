@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Diet Planner</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #a8edea, #fed6e3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+      animation: fadeIn 1s ease-in;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+      width: 100%;
+      max-width: 500px;
+      text-align: center;
+      animation: popUp 1s ease;
+    }
+    h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+      color: #555;
+      text-align: left;
+    }
+    input, select {
+      width: 100%;
+      margin-top: 8px;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      background: #f7f7f7;
+      font-size: 16px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 12px;
+      width: 100%;
+      border: none;
+      background: #6c5ce7;
+      color: white;
+      font-size: 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #5a4bd1;
+    }
+    .loading {
+      display: none;
+      margin-top: 20px;
+      font-size: 18px;
+      color: #6c5ce7;
+    }
+    .result {
+      margin-top: 30px;
+      text-align: left;
+      background: #f1f5f9;
+      padding: 20px;
+      border-radius: 10px;
+      display: none;
+    }
+    .meal {
+      margin-bottom: 20px;
+    }
+    .meal strong {
+      display: block;
+      margin-bottom: 5px;
+      color: #333;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes popUp {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Personalized Diet Planner</h2>
+
+  <label for="calories">Your Daily Calorie Target:</label>
+  <input type="number" id="calories" placeholder="e.g. 2200" min="1000">
+
+  <label for="mealPlan">Select Meal Type:</label>
+  <select id="mealPlan">
+    <option value="standard">Standard</option>
+    <option value="vegan">Vegan</option>
+    <option value="keto">Keto</option>
+  </select>
+
+  <button onclick="generatePlan()">Generate Plan</button>
+
+  <div class="loading" id="loading">Calculating your plan...</div>
+
+  <div class="result" id="result">
+    <h3>Your Meal Plan:</h3>
+    <div class="meal">
+      <strong>Breakfast:</strong> <span id="breakfast"></span>
+    </div>
+    <div class="meal">
+      <strong>Lunch:</strong> <span id="lunch"></span>
+    </div>
+    <div class="meal">
+      <strong>Dinner:</strong> <span id="dinner"></span>
+    </div>
+  </div>
+</div>
+
+<script>
+  const meals = {
+    standard: {
+      breakfast: { name: "Oatmeal + Banana + Almonds", baseCalories: 300, protein: 10, carbs: 40, fat: 8, baseWeight: 250 },
+      lunch: { name: "Grilled Chicken Salad", baseCalories: 500, protein: 35, carbs: 20, fat: 20, baseWeight: 350 },
+      dinner: { name: "Salmon with Vegetables", baseCalories: 400, protein: 30, carbs: 10, fat: 25, baseWeight: 300 }
+    },
+    vegan: {
+      breakfast: { name: "Chia Pudding + Berries", baseCalories: 250, protein: 8, carbs: 30, fat: 10, baseWeight: 220 },
+      lunch: { name: "Tofu Stir Fry", baseCalories: 400, protein: 20, carbs: 35, fat: 15, baseWeight: 400 },
+      dinner: { name: "Lentil Soup + Kale", baseCalories: 350, protein: 22, carbs: 40, fat: 8, baseWeight: 300 }
+    },
+    keto: {
+      breakfast: { name: "Scrambled Eggs + Avocado", baseCalories: 450, protein: 20, carbs: 5, fat: 35, baseWeight: 200 },
+      lunch: { name: "Chicken Salad + Avocado", baseCalories: 600, protein: 40, carbs: 10, fat: 45, baseWeight: 350 },
+      dinner: { name: "Zucchini Noodles + Pesto", baseCalories: 500, protein: 15, carbs: 8, fat: 40, baseWeight: 250 }
+    }
+  };
+
+  function calculateMealPart(totalCalories, meal) {
+    if (meal === 'breakfast') return totalCalories * 0.25;
+    if (meal === 'lunch') return totalCalories * 0.35;
+    if (meal === 'dinner') return totalCalories * 0.40;
+  }
+
+  function adjustMacros(base, baseCalories, mealCalories) {
+    const ratio = mealCalories / baseCalories;
+    return {
+      protein: Math.round(base.protein * ratio),
+      carbs: Math.round(base.carbs * ratio),
+      fat: Math.round(base.fat * ratio),
+      weight: Math.round(base.baseWeight * ratio),
+      calories: Math.round(mealCalories)
+    };
+  }
+
+  function generatePlan() {
+    const calories = document.getElementById('calories').value;
+    const type = document.getElementById('mealPlan').value;
+    const loading = document.getElementById('loading');
+    const result = document.getElementById('result');
+
+    loading.style.display = 'block';
+    result.style.display = 'none';
+
+    setTimeout(() => {
+      if (!calories) {
+        alert('Please enter your calorie target!');
+        loading.style.display = 'none';
+        return;
+      }
+
+      const plan = meals[type];
+
+      const breakfastCals = calculateMealPart(calories, 'breakfast');
+      const lunchCals = calculateMealPart(calories, 'lunch');
+      const dinnerCals = calculateMealPart(calories, 'dinner');
+
+      const breakfast = adjustMacros(plan.breakfast, plan.breakfast.baseCalories, breakfastCals);
+      const lunch = adjustMacros(plan.lunch, plan.lunch.baseCalories, lunchCals);
+      const dinner = adjustMacros(plan.dinner, plan.dinner.baseCalories, dinnerCals);
+
+      document.getElementById('breakfast').innerHTML = `
+        ${plan.breakfast.name} <br>
+        Calories: ${breakfast.calories} kcal | Protein: ${breakfast.protein}g | Carbs: ${breakfast.carbs}g | Fat: ${breakfast.fat}g | Weight: ${breakfast.weight}g
+      `;
+
+      document.getElementById('lunch').innerHTML = `
+        ${plan.lunch.name} <br>
+        Calories: ${lunch.calories} kcal | Protein: ${lunch.protein}g | Carbs: ${lunch.carbs}g | Fat: ${lunch.fat}g | Weight: ${lunch.weight}g
+      `;
+
+      document.getElementById('dinner').innerHTML = `
+        ${plan.dinner.name} <br>
+        Calories: ${dinner.calories} kcal | Protein: ${dinner.protein}g | Carbs: ${dinner.carbs}g | Fat: ${dinner.fat}g | Weight: ${dinner.weight}g
+      `;
+
+      loading.style.display = 'none';
+      result.style.display = 'block';
+    }, 2000);
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Sugar Checkup</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #a8edea, #fed6e3);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 12px;
+      margin: 15px 0;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #00c9a7;
+      color: white;
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #007f6e;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Sugar Checkup</h1>
+    <p>Enter your fasting blood sugar level (mg/dL):</p>
+    <input type="number" id="sugarInput" placeholder="e.g., 90">
+    <button onclick="checkSugar()">Check Now</button>
+    <div class="result" id="resultText"></div>
+  </div>
+
+  <script>
+    function checkSugar() {
+      const sugar = document.getElementById('sugarInput').value;
+      const result = document.getElementById('resultText');
+
+      if (sugar === "") {
+        result.innerHTML = "Please enter your sugar level!";
+        result.style.color = "red";
+        return;
+      }
+
+      const sugarLevel = parseFloat(sugar);
+
+      if (sugarLevel < 70) {
+        result.innerHTML = "Low Sugar! (Hypoglycemia)";
+        result.style.color = "orange";
+      } else if (sugarLevel >= 70 && sugarLevel <= 99) {
+        result.innerHTML = "Normal Sugar Level ✅";
+        result.style.color = "green";
+      } else if (sugarLevel >= 100 && sugarLevel <= 125) {
+        result.innerHTML = "Prediabetes (Warning)";
+        result.style.color = "orange";
+      } else if (sugarLevel >= 126) {
+        result.innerHTML = "Diabetes (Consult Doctor)";
+        result.style.color = "red";
+      } else {
+        result.innerHTML = "Invalid input!";
+        result.style.color = "red";
+      }
+    }
+  </script>
+
+</body>
+
+</html>

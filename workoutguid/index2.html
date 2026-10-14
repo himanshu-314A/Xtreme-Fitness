@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workout Guide</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      overflow: hidden;
+      background: linear-gradient(-45deg, #a8edea, #fed6e3, #fbc2eb, #a6c1ee);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+    }
+
+    /* Background animation */
+    @keyframes gradientBG {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    nav {
+      background-color: #333;
+      padding: 15px;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      margin-right: 20px;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .body-parts, .sub-body-parts {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeIn 0.6s forwards;
+    }
+
+    .body-parts button, .sub-body-parts button {
+      background-color: #6ab04c;
+      border: none;
+      padding: 15px 30px;
+      font-size: 18px;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .body-parts button:hover, .sub-body-parts button:hover {
+      background-color: #55a545;
+      transform: scale(1.05);
+    }
+
+    .sub-body-parts {
+      display: none;
+      opacity: 0;
+      animation: fadeIn 0.6s forwards;
+    }
+
+    .video-container {
+      display: none;
+      text-align: center;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: opacity 1s ease-in-out, transform 0.5s ease-out;
+    }
+
+    .video-container video {
+      width: 80%;
+      height: 500px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Fade-in Animation */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Pop-out Animation */
+    @keyframes popOut {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div>Workout Guide</div>
+    <div><a href="javascript:void(0);" onclick="showBodyParts()">Workout</a></div>
+  </nav>
+
+  <div class="container" id="workout-section">
+    <!-- Main Body Parts -->
+    <div class="body-parts">
+      <button onclick="showExerciseOptions('chest')">Chest</button>
+      <button onclick="showExerciseOptions('back')">Back</button>
+      <button onclick="showExerciseOptions('legs')">Legs</button>
+      <button onclick="showExerciseOptions('arms')">Arms</button>
+      <button onclick="showExerciseOptions('shoulders')">Shoulders</button>
+    </div>
+
+    <!-- Sub-options for each body part -->
+    <div id="chest-options" class="sub-body-parts">
+      <button onclick="showExerciseVideo('upper-chest')">Upper Chest</button>
+      <button onclick="showExerciseVideo('middle-chest')">Middle Chest</button>
+      <button onclick="showExerciseVideo('lower-chest')">Lower Chest</button>
+    </div>
+
+    <div id="back-options" class="sub-body-parts">
+      <button onclick="showExerciseVideo('upper-back')">Upper Back</button>
+      <button onclick="showExerciseVideo('lower-back')">Lower Back</button>
+    </div>
+
+    <div id="legs-options" class="sub-body-parts">
+      <button onclick="showExerciseVideo('quads')">Quads</button>
+      <button onclick="showExerciseVideo('hamstrings')">Hamstrings</button>
+      <button onclick="showExerciseVideo('calves')">Calves</button>
+    </div>
+
+    <div id="arms-options" class="sub-body-parts">
+      <button onclick="showExerciseVideo('biceps')">Biceps</button>
+      <button onclick="showExerciseVideo('triceps')">Triceps</button>
+    </div>
+
+    <div id="shoulders-options" class="sub-body-parts">
+      <button onclick="showExerciseVideo('front-delt')">Front Delt</button>
+      <button onclick="showExerciseVideo('side-delt')">Side Delt</button>
+      <button onclick="showExerciseVideo('rear-delt')">Rear Delt</button>
+    </div>
+
+    <!-- Videos (Replace with your own video files) -->
+    <div id="upper-chest-video" class="video-container">
+      <h3>Upper Chest: Exercise</h3>
+      <video  autoplay>
+        <source src="exercise/upper chest.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div id="middle-chest-video" class="video-container">
+      <h3>Middle Chest: Exercise</h3>
+      <video  autoplay>
+        <source src="exercise/middle chest.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div id="lower-chest-video" class="video-container">
+      <h3>Lower Chest: Exercise</h3>
+      <video  autoplay>
+        <source src="exercise/lower chest.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div id="upper-back-video" class="video-container">
+      <h3>Upper Back: Exercise</h3>
+      <video  autoplay>
+        <source src="exercise/upper back.mp4 " type="video/mp4">
+      </video>
+    </div>
+
+    <div id="lower-back-video" class="video-container">
+      <h3>Lower Back: Exercise</h3>
+      <video  autoplay>
+        <source src="exercise/lower back.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div id="quads-video" class="video-container">
+      <h3>Quads: Exercise</h3>
+      <video  autoplay>
+        <source src="exercise/quards.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div id="hamstrings-video" class="video-container">
+      <h3>Hamstrings: Exercise</h3>
+      <video  autoplay>
+        <source src="exercise/Hamstrings.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div id="calves-video" class="video-container">
+      <h3>Calves: Exercise</h3>
+      <video  autoplay>
+        <source src="exercise/calves.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div id="biceps-video" class="video-container">
+      <h3>Biceps: Exercise</h3>
+      <video  autoplay>
+        <source src="exercise/biceps.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div id="triceps-video" class="video-container">
+      <h3>Triceps: Exercise</h3>
+      <video  autoplay>
+        <source src="exercise/tricep.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div id="front-delt-video" class="video-container">
+      <h3>Front Delt: Exercise</h3>
+      <video  autoplay>
+        <source src="exercise/front delts.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div id="side-delt-video" class="video-container">
+      <h3>Side Delt: Exercise</h3>
+      <video  autoplay>
+        <source src="exercise/side delts.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div id="rear-delt-video" class="video-container">
+      <h3>Rear Delt: Exercise</h3>
+      <video  autoplay>
+        <source src="exercise/rear dealts.mp4" type="video/mp4">
+      </video>
+    </div>
+
+  </div>
+
+  <script>
+    function showBodyParts() {
+      document.getElementById('workout-section').style.display = 'block';
+      document.querySelector('.body-parts').style.opacity = 1;
+    }
+
+    function showExerciseOptions(bodyPart) {
+      const allOptions = document.querySelectorAll('.sub-body-parts');
+      const allVideos = document.querySelectorAll('.video-container');
+
+      allOptions.forEach(option => option.style.display = 'none');
+      allVideos.forEach(video => {
+        video.style.display = 'none';
+        video.style.opacity = 0;
+      });
+
+      const selectedOptions = document.getElementById(bodyPart + '-options');
+      if (selectedOptions) {
+        selectedOptions.style.display = 'flex';
+      }
+    }
+
+    function showExerciseVideo(exercise) {
+      const allVideos = document.querySelectorAll('.video-container');
+      allVideos.forEach(video => {
+        video.style.display = 'none';
+        video.style.opacity = 0;
+      });
+
+      const selectedVideo = document.getElementById(exercise + '-video');
+      if (selectedVideo) {
+        selectedVideo.style.display = 'block';
+        selectedVideo.style.animation = 'popOut 0.5s ease-out forwards';
+      }
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fitness Tool Menu</title>
+  <style>
+    /* Base styles */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #111, #2a2a2a);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      animation: fadeIn 1.2s ease-in-out forwards;
+    }
+
+    h1 {
+      color: #fff;
+      margin-bottom: 40px;
+      text-align: center;
+      animation: slideDown 1s ease-out;
+    }
+
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      animation: slideUp 1.2s ease-in-out;
+    }
+
+    .btn {
+      padding: 15px 40px;
+      font-size: 20px;
+      border: 2px solid #00ffcc;
+      border-radius: 12px;
+      cursor: pointer;
+      background-color: transparent;
+      color: #00ffcc;
+      transition: all 0.3s ease;
+      position: relative;
+      box-shadow: 0 0 10px #00ffcc44;
+    }
+
+    .btn:hover {
+      background-color: #00ffcc;
+      color: #000;
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #00ffccaa;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="content">
+    <h1>Choose Your Fitness Tool</h1>
+    <div class="button-container">
+      <button class="btn" onclick="goToPage('index5.html')">Macros</button>
+      <button class="btn" onclick="goToPage('dietplanner.html')">Diet</button>
+      <button class="btn" onclick="goToPage('bmi.html')">BMI</button>
+      <button class="btn" onclick="goToPage('fatpercentage.html')">Fat Percentage</button>
+    </div>
+  </div>
+
+  <script>
+    function goToPage(page) {
+      window.location.href = page;
+    }
+  </script>
+
+</body>
+</html>

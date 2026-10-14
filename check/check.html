@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scroll Zoom Effect</title>
+  <style>
+    body {
+      margin: 0;
+      height: 200vh; /* Make the page scrollable */
+      background: #f0f0f0;
+    }
+    .container {
+      height: 250vh; /* The container allows for scrolling */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    img {
+      width: 400px;
+      height: auto;
+      transition: transform 0.5s ease; /* Smooth transition */
+      transform: scale(1); /* Default scale */
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <img id="zoomImage" src="yoga5.jpg" alt="Zoom Image">
+  </div>
+
+  <script>
+    const image = document.getElementById("zoomImage");
+
+    window.addEventListener("scroll", () => {
+      const rect = image.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      // Get the position of the image relative to the viewport
+      const imageTop = rect.top;
+      const imageBottom = rect.bottom;
+
+      // Zoom in when the image reaches 100vh (top of the image is at the top of the viewport)
+      if (imageTop <= 0) {
+        image.style.transform = "scale(1.2)"; // Zoom in
+      }
+      // Zoom out when the image comes to 80vh (image top reaches 80% of the viewport height)
+      else if (imageTop < windowHeight * 0.8 && imageBottom > windowHeight * 0.8) {
+        image.style.transform = "scale(0.8)"; // Zoom out
+      }
+      // Zoom out when the image comes to 20vh (image top reaches 20% of the viewport height)
+      else if (imageTop < windowHeight * 0.2 && imageBottom > windowHeight * 0.2) {
+        image.style.transform = "scale(0.8)"; // Zoom out
+      }
+      else {
+        // Default scaling (no zoom)
+        image.style.transform = "scale(1)";
+      }
+    });
+  </script>
+
+</body>
+</html>

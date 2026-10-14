@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Signup/Login Form</title>
+  <style>
+    /* --- your CSS same as you shared --- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: fadeInBody 1s ease-in;
+    }
+
+    .container {
+      background: #fff;
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      animation: slideUp 1s ease-out forwards;
+      transition: 0.4s;
+    }
+
+    .container:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    }
+
+    h2 {
+      margin-bottom: 25px;
+      color: #2d3436;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #dfe6e9;
+      border-radius: 8px;
+      background: #f1f2f6;
+      transition: 0.3s;
+    }
+
+    input:focus {
+      border-color: #6c5ce7;
+      background: #ffffff;
+      box-shadow: 0 0 10px rgba(108, 92, 231, 0.3);
+      outline: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      border: none;
+      border-radius: 8px;
+      background: #6c5ce7;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+      transition: 0.3s;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background: #5a4fcf;
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 10px 20px rgba(108, 92, 231, 0.3);
+    }
+
+    p {
+      margin-top: 15px;
+      color: #636e72;
+      font-size: 14px;
+    }
+
+    p span {
+      color: #6c5ce7;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    @keyframes fadeInBody {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    @keyframes slideUp {
+      from {transform: translateY(50px); opacity: 0;}
+      to {transform: translateY(0); opacity: 1;}
+    }
+  </style>
+</head>
+<body>
+
+<div class="container" id="formContainer">
+  <h2 id="formTitle">Signup</h2>
+
+  <input type="text" id="username" placeholder="Username">
+  <input type="email" id="email" placeholder="Email">
+  <input type="password" id="password" placeholder="Password">
+
+  <button onclick="submitForm()">Signup</button>
+
+  <p>Already have an account? <span onclick="toggleForm()">Login</span></p>
+</div>
+
+<script>
+  let isSignup = true;
+
+  function toggleForm() {
+    isSignup = !isSignup;
+    const title = document.getElementById('formTitle');
+    const button = document.querySelector('button');
+    const text = document.querySelector('p');
+
+    if (isSignup) {
+      title.innerText = "Signup";
+      button.innerText = "Signup";
+      text.innerHTML = `Already have an account? <span onclick="toggleForm()">Login</span>`;
+    } else {
+      title.innerText = "Login";
+      button.innerText = "Login";
+      text.innerHTML = `Don't have an account? <span onclick="toggleForm()">Signup</span>`;
+    }
+  }
+
+  async function submitForm() {
+    const username = document.getElementById('username')?.value.trim();
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value.trim();
+
+    if (isSignup && (!username || !email || !password)) {
+      alert("⚠️ Please fill all fields to Signup!");
+      return;
+    } else if (!isSignup && (!email || !password)) {
+      alert("⚠️ Please fill all fields to Login!");
+      return;
+    }
+
+    const url = isSignup ? "/signup" : "/login";
+    const formData = new FormData();
+    if (isSignup) formData.append("username", username);
+    formData.append("email", email);
+    formData.append("password", password);
+
+    const response = await fetch(url, {
+      method: "POST",
+      body: formData
+    });
+
+    const text = await response.text();
+
+    if (response.ok) {
+      alert(`✅ ${text}`);
+    } else {
+      alert(`❌ ${text}`);
+    }
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BMI Calculator</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #00b894, #55efc4);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: fadeInBody 1s ease-in;
+    }
+
+    .container {
+      background: #ffffff;
+      padding: 35px 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      transition: 0.4s;
+      animation: slideUp 1s ease-out forwards;
+    }
+
+    .container:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    h2 {
+      margin-bottom: 25px;
+      font-size: 28px;
+      color: #2d3436;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #2d3436;
+      text-align: left;
+      margin-top: 15px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #dcdde1;
+      margin-bottom: 20px;
+      transition: all 0.3s;
+      background: #f5f6fa;
+    }
+
+    input:hover, input:focus {
+      border-color: #00b894;
+      background: #ffffff;
+      box-shadow: 0 0 8px rgba(0, 184, 148, 0.5);
+      outline: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      background: #00b894;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background: #019875;
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 10px 20px rgba(0, 184, 148, 0.3);
+    }
+
+    #loading {
+      display: none;
+      margin-top: 20px;
+      font-size: 18px;
+      color: #00b894;
+    }
+
+    #spinner {
+      width: 30px;
+      height: 30px;
+      border: 4px solid #f1f2f6;
+      border-top: 4px solid #00b894;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 10px auto;
+    }
+
+    #result {
+      margin-top: 20px;
+      background: #f1f2f6;
+      padding: 20px;
+      border-radius: 10px;
+      display: none;
+      text-align: left;
+      animation: fadeInResult 0.7s ease-out forwards;
+      transition: 0.3s;
+    }
+
+    #result:hover {
+      background: #dfe6e9;
+      transform: scale(1.02);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    #result h3 {
+      color: #2d3436;
+      margin-bottom: 10px;
+    }
+
+    #result p {
+      color: #636e72;
+      margin-bottom: 6px;
+    }
+
+    @keyframes fadeInBody {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes fadeInResult {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @media(max-width: 500px) {
+      .container {
+        padding: 25px 20px;
+      }
+      h2 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+  <h2>BMI Calculator</h2>
+
+  <label for="weight">Weight (kg)</label>
+  <input type="number" id="weight" placeholder="Enter your weight">
+
+  <label for="height">Height (cm)</label>
+  <input type="number" id="height" placeholder="Enter your height">
+
+  <button onclick="calculateBMI()">Calculate BMI</button>
+
+  <div id="loading">
+    <div id="spinner"></div>
+    Calculating...
+  </div>
+
+  <div id="result">
+    <h3>Your BMI Result:</h3>
+    <p id="bmiValue"></p>
+    <p id="bmiCategory"></p>
+  </div>
+</div>
+
+<script>
+  function calculateBMI() {
+    const weight = parseFloat(document.getElementById('weight').value);
+    const height = parseFloat(document.getElementById('height').value);
+    const resultDiv = document.getElementById('result');
+    const bmiValue = document.getElementById('bmiValue');
+    const bmiCategory = document.getElementById('bmiCategory');
+    const loadingDiv = document.getElementById('loading');
+
+    loadingDiv.style.display = 'block';
+    resultDiv.style.display = 'none';
+
+    if (!weight || !height) {
+      alert("⚠️ Please fill in both weight and height fields!");
+      loadingDiv.style.display = 'none';
+      return;
+    }
+
+    setTimeout(function() {
+      const heightInMeters = height / 100;
+      const bmi = weight / (heightInMeters * heightInMeters);
+      const bmiRounded = bmi.toFixed(1);
+
+      bmiValue.innerText = `BMI: ${bmiRounded}`;
+
+      let category = '';
+      if (bmi < 18.5) {
+        category = 'Underweight';
+      } else if (bmi >= 18.5 && bmi <= 24.9) {
+        category = 'Normal weight';
+      } else if (bmi >= 25 && bmi <= 29.9) {
+        category = 'Overweight';
+      } else {
+        category = 'Obese';
+      }
+
+      bmiCategory.innerText = `Category: ${category}`;
+
+      loadingDiv.style.display = 'none';
+      resultDiv.style.display = 'block';
+    }, 2000);
+  }
+</script>
+
+</body>
+</html>

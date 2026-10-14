@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zoom-In/Out Images on Scroll</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      background-color: black;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(4, 25%);
+      grid-template-rows: repeat(4, 25%);
+      width: 100vw;
+      height: 100vh;
+      overflow-y: scroll;
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: none;
+    }
+
+    .image {
+      background-color: lightgray;
+      background-size: cover;
+      background-position: center;
+      border: 2px solid #fff;
+      transition: transform 1s ease-out, opacity 1s ease-out;
+      opacity: 0;
+      transform: scale(0.5);
+      width: 70vw;
+      height: 70vh;
+      margin: auto;
+    }
+
+    .image.visible {
+      opacity: 1;
+    }
+
+    .image.zoomed-in {
+      transform: scale(1);
+    }
+
+    .image.zoomed-out {
+      transform: scale(0.2);
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="image" style="background-image: url('https://via.placeholder.com/300x300');"></div>
+    <div class="image" style="background-image: url('https://via.placeholder.com/300x300');"></div>
+    <div class="image" style="background-image: url('https://via.placeholder.com/300x300');"></div>
+    <div class="image" style="background-image: url('https://via.placeholder.com/300x300');"></div>
+    <div class="image" style="background-image: url('https://via.placeholder.com/300x300');"></div>
+    <div class="image" style="background-image: url('https://via.placeholder.com/300x300');"></div>
+    <div class="image" style="background-image: url('https://via.placeholder.com/300x300');"></div>
+    <div class="image" style="background-image: url('https://via.placeholder.com/300x300');"></div>
+    <div class="image" style="background-image: url('https://via.placeholder.com/300x300');"></div>
+    <div class="image" style="background-image: url('https://via.placeholder.com/300x300');"></div>
+    <div class="image" style="background-image: url('https://via.placeholder.com/300x300');"></div>
+    <div class="image" style="background-image: url('https://via.placeholder.com/300x300');"></div>
+    <div class="image" style="background-image: url('https://via.placeholder.com/300x300');"></div>
+    <div class="image" style="background-image: url('https://via.placeholder.com/300x300');"></div>
+    <div class="image" style="background-image: url('https://via.placeholder.com/300x300');"></div>
+    <div class="image" style="background-image: url('https://via.placeholder.com/300x300');"></div>
+  </div>
+
+  <script>
+    const images = document.querySelectorAll('.image');
+    const container = document.querySelector('.container');
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      const containerHeight = container.offsetHeight;
+      
+      // When the user scrolls, reveal images and zoom in/out
+      images.forEach((image, index) => {
+        const imagePosition = image.getBoundingClientRect().top;
+
+        if (imagePosition < window.innerHeight && imagePosition > 0) {
+          image.classList.add('visible');
+          
+          if (scrollY < containerHeight * 0.3) {
+            image.classList.add('zoomed-in');
+            image.classList.remove('zoomed-out');
+          } else if (scrollY >= containerHeight * 0.3 && scrollY < containerHeight * 0.8) {
+            image.classList.remove('zoomed-in');
+            image.classList.remove('zoomed-out');
+          } else {
+            image.classList.add('zoomed-out');
+            image.classList.remove('zoomed-in');
+          }
+        } else {
+          image.classList.remove('visible', 'zoomed-in', 'zoomed-out');
+        }
+      });
+    });
+
+    // Initially show the container after page load
+    window.addEventListener('load', () => {
+      container.style.display = 'grid';
+    });
+  </script>
+</body>
+</html>
