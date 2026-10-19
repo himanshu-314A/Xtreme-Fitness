@@ -1,198 +1,378 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YOGA</title>
-
-    <link rel="stylesheet" href="style.css">
-
+    <title>Fitness website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="fit.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
-<body>
-    
-    <header>
 
-        <nav>
-            <a href="fitness.html" class="active">Home</a>
-            <!-- <a href="nutrition/index5.html">Macro Calculator</a> -->
-            <!-- <a href="">Portfolio</a> -->
-            <a href="">Services</a>
-            <a href="">Contact</a>
+<body>
+    <!-- ALL nave bar information -->
+    <header id="head">
+
+        <nav id="navbar">
+            <div class="logo"><img src="gym image/Elevate4.png" alt=""></div>
+            <div class="bars">
+                <ul>
+                    <li class="item"><a href="fitness.html">HOME</a></li>
+                    <li class="item"><a href="workoutguid/index2.html">WORKOUT</a></li>
+                    <li class="item"><a href="index.html">YOGA</a></li>
+                    <li class="item"><a href="nutrition/index.html">TOOLS</a></li>
+                </ul>
+            </div>
+            <div class="icons">
+                <i class="fa-solid fa-location-dot"></i>
+                <i class="fa-solid fa-cart-shopping"></i>
+                <a href="inex.html"><i class="fa-solid fa-user"></i></a>
+
+            </div>
         </nav>
 
     </header>
+    <!-- ALL about main containt -->
+    <!-- background video -->
+    <main id="maincontaint-1">
+        <div id="bgvideo">
+            <video class="video-bg" autoplay muted loop>
+                <source src="fitvideo.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <!-- motivation line -->
+        <div class="motivationline">
+            <span class="line1">Fuel your grind. Build your best self</span>
+            <span class="line2">one rep, one step, one day at a time.</span>
+        </div>
+        <!-- rotating cards -->
+        <div id="animation-box">
+            <div id="animation">
+                <div class="container">
+                    <span style="--i:1"><img src="gym image/image1.jpg" alt=""></span>
+                    <span style="--i:2"><img src="gym image/meal planinig.jpeg" alt=""></span>
+                    <span style="--i:3"><img src="gym image/yoga image.jpg" alt=""></span>
+                    <span style="--i:44"><img src="gym image/yoga 2.jpg" alt=""></span>
+                    <span style="--i:5"><img src="gym image/yoga 3.jpg" alt=""></span>
+                    <span style="--i:6"><img src="gym image/yoga4.jpg" alt=""></span>
+                    <span style="--i:7"><img src="gym image/yoga5.jpg" alt=""></span>
+                    <span style="--i:8"><img src="gym image/image3.jpg" alt=""></span>
+                    <span style="--i:9"><img src="gym image/image1.jpg" alt=""></span>
 
-
-    <div class="carousel">
-
-        <div class="list">
-
-            <div class="item" style="background-image: url(image/Downward-FacingDog.jpg);">
-                <div class="content">
-                    <div class="title">Downward-Facing Dog</div>
-                    <!-- <div class="name">Adho Mukha Svanasana</div> -->
-                    <div class="des"> Downward Facing Dog stretches the hamstrings and calves, and it strengthens the arms and legs. The pose also helps increase the strength of the external oblique abdominal muscles.</div>
-                    <div class="btn">
-                     <a href="https://yogawithsapna.com/downward-facing-dog-exploration-anatomy-and-alignment/">see more</a>
-                     <a href="video/video1.html">video</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="item" style="background-image: url(image/Upward-FacingDog.jpg);">
-                
-                <div class="content">
-                    <div class="title">Upward-Facing Dog</div>
-                    <!-- <div class="name">OWL</div> -->
-                    <div class="des">Upward-Facing Dog offers a wide range of physical and mental benefits that can transform your yoga practice and improve your overall well-being.</div>
-                    <div class="btn">
-                        <a href="https://www.yogajournal.com/poses/upward-facing-dog-2/">see more</a>
-                     <a href="video/video2.html">video</a>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="item" style="background-image: url(https://static.webteb.net/images/uploads/three-3.jpg);">
-
-                <div class="content">
-                    <div class="title">Dandasana</div>
-                    <!-- <div class="name">CROW</div> -->
-                    <div class="des">Dandasana, also called Staff Pose, is a foundational seated posture in yoga that helps establish alignment and strength throughout the body. In this pose, you sit on the floor with your legs extended straight out in front of you and your feet flexed, keeping the toes pointing upward.</div>
-                    <div class="btn">
-                        <a href="https://www.tummee.com/yoga-poses/dandasana#:~:text=Dandasana,%20in%20other%20words,%20Staff%20Pose,%20refers%20to,a%20strong%20staff%20which%20is%20straight%20and%20strong.">see more</a>
-                        <a href="video/video3.html">video</a>
-                    </div>
                 </div>
 
             </div>
+            <!-- side lies of rotating cards -->
+            <div class="animation-lines" style="color: white;">
+                <span class="animation-line1">Healping people live </span>
+                <span class="animation-line1">their</span>
+                <span class="animation-line2">BEST LIVES</span>
+            </div>
+        </div>
+        <!-- background images -->
+        <div id="check">
+            <div class="box box1"></div>
+            <div class="box box2"></div>
+            <div class="box box3"></div>
+            <div class="box box4"></div>
+            <div class="box box5"></div>
+            <div class="box box6"></div>
+            <div class="box box7"></div>
+            <div class="box box8"></div>
 
-            <div class="item" style="background-image: url(image/CobraPose.webp);">
-                
-                <div class="content">
-                    <div class="title">Cobra Pose</div>
-                    <!-- <div class="name">BUTTERFLY</div> -->
-                    <div class="des">Cobra Pose, known in Sanskrit as Bhujangasana, is a gentle backbend that strengthens the spine and opens the chest. To practice Cobra Pose, you begin by lying flat on your stomach with your legs extended behind you and the tops of your feet pressing into the floor.</div>
-                    <div class="btn">
-                        <a href="https://www.artofliving.org/in-en/yoga/yoga-poses/bhujangasana-cobra-pose">see more</a>
-                     <a href="video/video4.html">video</a>
+            <div class="check2">
+                <span class="check2line">Unleash Your</span><br>
+                <span class="check2line2">Inner Athlete.</span>
+            </div>
+        </div>
+        <!-- transation cards -->
+        <!-- <div  id="benefits" >
+            <div class="card-container">
+                <div class="card1">
+                    <div class="card">
+                        <img src="gym image/yoga9.webp" alt="">
+                        
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="gym image/yoga8.png" alt="">
+                    
+                </div>
+                <div class="card">
+                    <img src="gym image/yoga 6.jpg" alt="">
+                   
+                </div>
+                <div class="card">
+                    <img src="gym image/yoga4.jpg" alt="">
+                   
+                </div>
+            </div>
+        </div> -->
+        <!-- pass plane -->
+        <div id="passplan">
+            <div class="plans">
+                <!-- Plan 1 -->
+                <div class="plan-card">
+                    <div class="plan-image"
+                        style="background-image: url('https://media.timeout.com/images/105157954/630/472/image.jpg');">
+                        <!-- <div class="plan-title">cultpass ELITE</div> -->
+                    </div>
+                    <div class="plan-content">
+                        <p><strong>Unlimited access to</strong></p>
+                        <ul>
+                            <li>At-center group classes</li>
+                            <li>All ELITE & PRO gyms</li>
+                            <li>At-home live workouts</li>
+                        </ul>
+                        <div class="plan-buttons">
+                            <button class="btn-try">TRY FOR FREE</button>
+                            <button class="btn-learn">LEARN MORE</button>
+                        </div>
                     </div>
                 </div>
 
-            </div>
-
-            <div class="item" style="background-image: url(image/Virasana.jpg);">
-                
-                <div class="content">
-                    <div class="title">Virasana</div>
-                    <!-- <div class="name">OWL</div> -->
-                    <div class="des">Virasana, known as Hero Pose, is a seated yoga posture that promotes stillness, grounding, and mindful breathing. To practice Virasana, you begin by kneeling on the floor with your knees together and your feet slightly wider than your hips</div>
-                    <div class="btn">
-                        <a href="https://www.classicyoga.co.in/2019/11/virasana-meaning-steps-benefits/">see more</a>
-                     <a href="video/video5.html">video</a>
+                <!-- Plan 2 -->
+                <div class="plan-card">
+                    <div class="plan-image"
+                        style="background-image: url('https://static.vecteezy.com/system/resources/thumbnails/008/013/570/small_2x/professional-badminton-player-use-racquet-hit-shuttle-cock-or-shuttlecock-on-court-during-warm-up-play-before-tournament-competition-in-single-man-type-in-indoor-court-photo.jpg');">
+                        <!-- <div class="plan-title">cultpass PRO</div> -->
+                    </div>
+                    <div class="plan-content">
+                        <p><strong>Unlimited access to</strong></p>
+                        <ul>
+                            <li>All PRO gyms</li>
+                            <li>2 sessions/month at ELITE gyms</li>
+                            <li>At-home live workouts</li>
+                        </ul>
+                        <div class="plan-buttons">
+                            <button class="btn-try">TRY FOR FREE</button>
+                            <button class="btn-learn">LEARN MORE</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- plan 3 -->
+                <div class="plan-card">
+                    <div class="plan-image"
+                        style="background-image: url('https://tse3.mm.bing.net/th/id/OIP.FIKpWNHHvoRQ_PfbfTCnAgHaE7?cb=iwp1&rs=1&pid=ImgDetMain');">
+                        <!-- <div class="plan-title">cultpass PRO</div> -->
+                    </div>
+                    <div class="plan-content">
+                        <p><strong>Unlimited access to</strong></p>
+                        <ul>
+                            <li>All PRO gyms</li>
+                            <li>2 sessions/month at ELITE gyms</li>
+                            <li>At-home live workouts</li>
+                        </ul>
+                        <div class="plan-buttons">
+                            <button class="btn-try">TRY FOR FREE</button>
+                            <button class="btn-learn">LEARN MORE</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- plan 4 -->
+                <div class="plan-card">
+                    <div class="plan-image"
+                        style="background-image: url('https://images.herzindagi.info/image/2022/May/fun-cardio-workout.jpg');">
+                        <!-- <div class="plan-title">cultpass PRO</div> -->
+                    </div>
+                    <div class="plan-content">
+                        <p><strong>Unlimited access to</strong></p>
+                        <ul>
+                            <li>All PRO gyms</li>
+                            <li>2 sessions/month at ELITE gyms</li>
+                            <li>At-home live workouts</li>
+                        </ul>
+                        <div class="plan-buttons">
+                            <button class="btn-try">TRY FOR FREE</button>
+                            <button class="btn-learn">LEARN MORE</button>
+                        </div>
                     </div>
                 </div>
 
-            </div>
+                <!-- Add more cards similarly -->
 
-            <div class="item" style="background-image: url(image/Camel.jpg);">
-                
-                <div class="content">
-                    <div class="title">Camel</div>
-                    <!-- <div class="name">EAGLE</div> -->
-                    <div class="des">Camel Pose, or Ustrasana in Sanskrit, is a deep backbend that stretches the entire front of the body while building strength and flexibility in the spine. To enter Camel Pose, you begin by kneeling on the floor with your knees hip-width apart and your thighs perpendicular to the ground. </div>
-                    <div class="btn">
-                        <a href="https://www.topyogaworld.com/archives/9172">see more</a>
-                     <a href="video/video6.html">video</a>
+            </div>
+            <div class="linemotivation text-overlay"  >
+                <span>"Push your limits —</span><br> 
+                <span>transform your body,</span> <br>
+                <span>elevate your mind."</span>
+            </div>
+        </div>
+        <!-- fetness featur -->
+        <div id="fitnessfeatur">
+
+            <div class="columns">
+                <!-- Left Column -->
+                <div class="column">
+                    <div class="feature-card bg1">
+                        <a href="nutrition/dietplanner.html" class="arrow" >➔</a>
+                        <h2>Diet Planning</h2>
+                        <p>Get your customized Diet Plan</p>
+                    </div>
+
+                    <div class="feature-card bg2">
+                        <a href="nutrition/index5.html" class="arrow">➔</a>
+                        <h2>Macros</h2>
+                        <p>Making health easy, one day at a time</p>
                     </div>
                 </div>
 
-            </div>
+                <!-- Right Column -->
+                <div class="column">
+                    <div class="feature-card bg3">
+                        <a href="nutrition/bmi.html" class="arrow">➔</a>
+                        <h2>Bmi</h2>
+                        <p>Track your Progress</p>
+                    </div>
 
-            <div class="item" style="background-image: url(image/ReversePlank.jpeg);">
-                
-                <div class="content">
-                    <div class="title">Reverse Plank</div>
-                    <!-- <div class="name">KINGFISHER</div> -->
-                    <div class="des">Reverse Plank, known as Purvottanasana in Sanskrit, is a powerful yoga pose that strengthens the entire back body while opening the chest and shoulders. To practice Reverse Plank, you begin seated on the floor with your legs extended straight out in front of you and your hands placed slightly behind your hips, fingers pointing toward your feet.</div>
-                    <div class="btn">
-                        <a href="https://www.flexifyme.com/blogs/benefits-of-reverse-plank-exercise/">see more</a>
-                     <a href="video/video7.html">video</a>
+                    <div class="feature-card bg4">
+                        <a href="nutrition/fatpercentage.html" class="arrow">➔</a>
+                        <h2>Fat %</h2>
+                        <p>Relax and train your mind daily</p>
                     </div>
                 </div>
-
             </div>
-
-            <div class="item" style="background-image: url(image/ForwordBend.jpg);">
-                
-                <div class="content">
-                    <div class="title">Forword Bend</div>
-                    <!-- <div class="name">PARROT</div> -->
-                    <div class="des">Forward Bend, known in Sanskrit as Paschimottanasana when seated, is a calming yoga pose that stretches the entire back side of the body while encouraging inward reflection. In a seated Forward Bend, you begin by sitting on the floor with your legs extended straight in front of you. </div>
-                    <div class="btn">
-                        <a href="https://www.yogabasics.com/practice/pose-type/forward-bending-poses/">see more</a>
-                        <a href="video/video8.html">video</a>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="item" style="background-image: url(image/Pigeon.jpg);">
-                
-                <div class="content">
-                    <div class="title">Pigeon</div>
-                    <!-- <div class="name">HERON</div> -->
-                    <div class="des">Pigeon Pose, known as Kapotasana in Sanskrit, is a deep hip-opening posture that also stretches the thighs, groin, and lower back. To practice Pigeon Pose, you begin from a tabletop or downward-facing dog position and bring one knee forward, placing it behind your wrist, while the opposite leg extends straight back behind you with the top of the foot resting on the floor.</div>
-                    <div class="btn">
-                        <a href="https://blog.alomoves.com/movement/pigeon-pose-yoga">see more</a>
-                     <a href="video/video9.html">video</a>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="item" style="background-image: url(image/Naukasana.jpg);">
-                
-                <div class="content">
-                    <div class="title">Naukasana </div>
-                    <!-- <div class="name">BUTTERFLY</div> -->
-                    <div class="des">Naukasana, known as Boat Pose in English, is a strengthening yoga posture that builds core stability, tones the abdominal muscles, and improves balance. To practice Naukasana, you begin by sitting on the floor with your legs extended in front of you. </div>
-                    <div class="btn">
-                        <a href="https://www.artofliving.org/in-en/yoga/yoga-poses/naukasana-boat-posture">see more</a>
-                     <a href="">video</a>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="item" style="background-image: url(image/plankpose.jpg);">
-                
-                <div class="content">
-                    <div class="title">Plank Pose</div>
-                    <!-- <div class="name">PARROT</div> -->
-                    <div class="des">Plank Pose, known as Phalakasana in Sanskrit, is a foundational yoga posture that builds strength, stability, and endurance throughout the entire body. To practice Plank Pose, you start from a hands-and-knees position and step your feet back one at a time until your body forms a straight line from the crown of your head to your heels. </div>
-                    <div class="btn">
-                        <a href="https://www.yogabasics.com/asana/plank/">see more</a>
-                     <a href="video/video11.html">video</a>
-                    </div>
-                </div>
-
-            </div>
-
         </div>
 
-        <!--next prev button-->
-        <div class="arrows">
-            <button class="prev"><</button>
-            <button class="next">></button>
-        </div>
+    </main>
+    <!-- footer -->
+    <body>
+
+        <!-- Page Content -->
+        <!-- <div class="content">
+          <h1>Workout Guide</h1>
+          <p>Let's light up your fitness journey under the stars!</p>
+        </div> -->
+      
+        <!-- Footer Section with Stars -->
+        <footer class="footer">
+          <div class="footer-container">
+            <div class="footer-col">
+              <img src="gym image/Elevate4.png" alt="Logo" style="width: 120px; margin-bottom: 10px;">
+              <p class="footer-description">
+                At Xtreme fitness, we make group workouts fun, daily food healthy & tasty, mental fitness easy with yoga & meditation, Medical & lifestyle care hassle-free. <strong>#BeBetterEveryDay</strong>
+              </p>
+            </div>
+            <div class="footer-col">
+              <h4>Company</h4>
+              <ul>
+                <li><a href="#"> Xtreme fitness for business</a></li>
+                <li><a href="#">Xtreme fitness franchise</a></li>
+                <li><a href="#">corporate partnerships</a></li>
+                <li><a href="#"> Xtreme fitness pass network</a></li>
+                <li><a href="#">t&c for business</a></li>
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h4>Support</h4>
+              <ul>
+                <li><a href="#">partner.fit</a></li>
+                <li><a href="#">blogs</a></li>
+                <li><a href="#">security</a></li>
+                <li><a href="#">careers</a></li>
+                <li><a href="#">contact us</a></li>
+              </ul>
+            </div>
+            <div class="footer-col">
+              <div class="store-buttons">
+                <img src="appstore-badge.png" alt="App Store">
+                <img src="playstore-badge.png" alt="Play Store">
+              </div>
+              <div class="social-icons">
+                <i class="fab fa-youtube"></i>
+                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-twitter"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-linkedin-in"></i>
+              </div>
+              <div class="qr-box">
+                <p style="font-size: 12px;">For better experience,<br>use Xtreme fitness app</p>
+                <img src="qrcode.png" alt="QR Code">
+              </div>
+            </div>
+          </div>
+      
+          <!-- Related Searches -->
+          <div class="related-searches">
+            <div class="related-col">
+              <p>Gym Near Me</p>
+              <p>Yoga Postures for Beginners</p>
+              <p>Strength Training</p>
+              <p>Fitness Glossary</p>
+            </div>
+            <div class="related-col">
+              <p>Face Yoga</p>
+              <p>Meditation in Hindi</p>
+              <p>Mobility Exercises</p>
+              <p>Morning Exercise</p>
+            </div>
+            <div class="related-col">
+              <p>Yoga For Stress Relief</p>
+              <p>Mindfulness Meditation</p>
+              <p>Kids Exercise</p>
+              <p>Home Workouts</p>
+            </div>
+            <div class="related-col">
+              <p>Chest Exercises</p>
+              <p>Yoga Asanas</p>
+              <p>How to Lose Weight</p>
+              <p>Back Exercises at Home</p>
+            </div>
+            <div class="related-col">
+              <p>Exercise to Reduce Belly Fat</p>
+              <p>Meditation Music</p>
+              <p>HIIT Workout</p>
+              <p>Abs Workout at Home</p>
+            </div>
+          </div>
+        </footer>
+      
+       
+      </body>
 
 
-        <!-- time running -->
-        <div class="timeRunning"></div>
+    <!-- mouse effect -->
+    <script>
+        // Create particles on mouse move
+        document.addEventListener('mousemove', function (event) {
+            // Create a new particle
+            var particle = document.createElement('div');
+            particle.classList.add('particle');
 
-    </div>
+            // Set particle position based on cursor position
+            particle.style.left = `${event.pageX - 5}px`;
+            particle.style.top = `${event.pageY - 5}px`;
 
-    <script src="app.js"></script>
+            // Assign a random color to the particle
+            var randomColor = `hsl(${Math.random() * 360}, 100%, 70%)`;
+            particle.style.backgroundColor = randomColor;
+
+            // Append particle to the body
+            document.body.appendChild(particle);
+
+            // Remove the particle after animation
+            setTimeout(() => {
+                particle.remove();
+            }, 2000); // Matches animation duration
+        });
+// star twinkaling
+        const footer = document.querySelector('.footer');
+    const numberOfStars = 150;
+
+    for (let i = 0; i < numberOfStars; i++) {
+      const star = document.createElement('div');
+      star.classList.add('star');
+      star.style.top = Math.random() * 100 + "%";
+      star.style.left = Math.random() * 100 + "%";
+      star.style.animationDuration = (Math.random() * 2 + 1) + "s";
+      footer.appendChild(star);
+    }
+        
+    </script>
 </body>
+
 </html>
