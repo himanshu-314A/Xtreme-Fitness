@@ -1,2 +1,2 @@
 *.mp4 filter=lfs diff=lfs merge=lfs -text
-fitvideo_compressed.mp4 -filter -diff -merge text
+fitvideo_compressed.mp4 -filter -diff -merge -text
